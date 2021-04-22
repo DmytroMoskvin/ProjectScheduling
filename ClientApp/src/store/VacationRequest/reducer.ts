@@ -26,7 +26,7 @@ const reducer: Reducer<VacationRequestState> = (state: VacationRequestState | un
 			case 'CHECK_USER':
 				const token = Cookies.get('token');
 				console.log('usercheck ' + token);
-				if(token != undefined){
+				if(token !== undefined){
 					console.log('new');
 					return { logged: true, token: token, requestHistory: [] };
 				}

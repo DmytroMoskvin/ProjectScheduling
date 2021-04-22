@@ -75,7 +75,7 @@ const VacationRequest: React.FunctionComponent<VacationRequestProps> = ( props: 
             console.log('send ' + props.token);
             requests = await getUserRequests(props.token);
             console.log('get requests' + requests);
-            if(requests != undefined)
+            if(requests !== undefined)
                 props.setHistory(requests.data.getCurrentUserRequests);
 
         }
