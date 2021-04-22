@@ -84,12 +84,11 @@ const VacationRequest: React.FunctionComponent<VacationRequestProps> = ( props: 
 
     const removeRequest = async (id: number) => {
         let requests = []
-        if(props.token)
-        {
+        if(props.token) {
             toggleLoading(true);
             requests = await removeUserRequest(props.token, id);
-        if(requests != undefined)
-            props.setHistory(requests.data.removeVacationRequest);
+            if(requests !== undefined)
+                props.setHistory(requests.data.removeVacationRequest);
             toggleLoading(false);
         }
     }
