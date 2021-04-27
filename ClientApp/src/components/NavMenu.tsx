@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import './NavMenu.css';
-import { ApplicationState } from '../store/configureStore';
-import { actionCreators } from '../store/User/actions';
+import { userActionCreators } from '../store/User/actions';
 import { UserState } from '../store/User/types';
 
 type UserProps =
     UserState &
-    typeof actionCreators &
+    typeof userActionCreators &
     RouteComponentProps<{}>;
 
 

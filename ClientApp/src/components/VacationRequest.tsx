@@ -1,29 +1,29 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { useState, useEffect, useCallback } from 'react';
 import { Redirect, RouteComponentProps } from 'react-router';
 import { ApplicationState } from '../store/configureStore';
 import{ VacationRequestState } from '../store/VacationRequest/types';
 import '../style/VacationRequest.css';
 import { actionCreators } from '../store/VacationRequest/actions';
+import { userActionCreators } from '../store/User/actions';
 import { RequestsTable } from './RequestsTable';
-import { addUserRequest, getUserRequests, removeUserRequest } from '../webAPI/vacationRequest';
+import { getUserRequests, removeUserRequest } from '../webAPI/vacationRequest';
 import { LoadingAnimation } from './Loading';
 import { UserState } from '../store/User/types';
-import { render } from 'react-dom';
 
-type Request = {
-	id: number,
-	startDate: Date, 
-	finishDate: Date,
-	status: string,
-	comment: string
-}
+// type Request = {
+// 	id: number,
+// 	startDate: Date, 
+// 	finishDate: Date,
+// 	status: string,
+// 	comment: string
+// }
 
 type VacationPageProps =
     VacationRequestState &
-    UserState &
     typeof actionCreators &
+    UserState &
+    typeof userActionCreators &
     RouteComponentProps<{}>;
 
 class VacationRequest extends React.PureComponent<VacationPageProps, { startDate: Date, finishDate: Date, loading: boolean}> {
@@ -166,6 +166,6 @@ class VacationRequest extends React.PureComponent<VacationPageProps, { startDate
 };
 
 export default connect(
-    (state: ApplicationState) => ({...state.loggedUser, ...state.vacationRequest}),
-    actionCreators
+    (state: ApplicationState) => {(state.loggedUser), (state.vacationRequest)},
+    {...actionCreators, ...userActionCreators}
 )(VacationRequest);

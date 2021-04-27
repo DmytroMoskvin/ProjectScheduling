@@ -8,7 +8,7 @@ const logIn =  (token: string) => ({ type: 'LOGIN_USER', token: token } as LogIn
 const setUserData = (userData: UserData) => ({ type: 'GET_USER', userData: userData } as GetUserAction);
 const logOut = () => ({ type: 'LOGOUT_USER' } as LogOutUserAction);
 
-export const actionCreators = {
+export const userActionCreators = {
 	logIn,
  	setUserData,
 	logOut

@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import { Action, Reducer } from "redux";
 import { KnownAction } from "./actions";
 import { VacationRequestState } from "./types";

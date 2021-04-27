@@ -8,12 +8,12 @@ import { ProfileForm } from './Profile';
 import '../style/LoadingAnimation.css';
 import { LoadingAnimation } from './Loading';
 import Cookies from 'js-cookie';
-import { actionCreators } from '../store/User/actions';
+import { userActionCreators } from '../store/User/actions';
 import { getUserData } from '../webAPI/user';
 
 type UserProps =
     UserState &
-    typeof actionCreators &
+    typeof userActionCreators &
     RouteComponentProps<{}>;
 
 class User extends React.PureComponent<UserProps, { isLoading: boolean, showError: boolean }>{
@@ -74,5 +74,5 @@ class User extends React.PureComponent<UserProps, { isLoading: boolean, showErro
 
 export default connect(
     (state: ApplicationState) => state.loggedUser,
-    actionCreators
+    userActionCreators
 )(User);
